@@ -1,0 +1,17 @@
+{
+  "name": "evoting-blockchain-mini-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Educational blockchain-based e-voting mini project",
+  "scripts": {
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "frontend": "http-server frontend -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "ethers": "^6.13.4",
+    "hardhat": "^2.22.17",
+    "http-server": "^14.1.1"
+  }
+}

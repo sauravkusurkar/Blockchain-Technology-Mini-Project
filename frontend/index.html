@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChainVote | Blockchain E-Voting</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+  <script src="contract-config.js" onerror="window.VOTING_CONFIG = null"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">◆</span><span>ChainVote</span></div>
+    <span class="tag">BLOCKCHAIN E-VOTING DEMO</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">TRANSPARENT · VERIFIABLE · DECENTRALIZED</div>
+      <h1>Your vote.<br><span>On the chain.</span></h1>
+      <p>A classroom demonstration of voting powered by an Ethereum-compatible smart contract.</p>
+      <div class="wallet-row">
+        <button id="connectBtn" class="btn primary">Connect MetaMask</button>
+        <span id="walletStatus" class="muted">Wallet not connected</span>
+      </div>
+      <div id="networkWarning" class="notice hidden">Switch MetaMask to Hardhat Local (Chain ID 31337).</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><span class="stat-label">CANDIDATES</span><strong id="candidateTotal">—</strong></article>
+      <article class="stat-card"><span class="stat-label">TOTAL VOTES</span><strong id="voteTotal">—</strong></article>
+      <article class="stat-card"><span class="stat-label">ELECTION STATUS</span><strong id="electionStatus" class="status">Loading</strong></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <div class="panel-head"><div><div class="eyebrow">THE BALLOT</div><h2>Candidate list</h2></div><span class="live-dot">● LIVE</span></div>
+        <p class="muted">Review candidates and cast one vote from your connected wallet.</p>
+        <div id="candidateList" class="candidate-list"><div class="empty">Connect to the local blockchain to load candidates.</div></div>
+        <div class="footnote">One vote per wallet address. Votes are recorded on the local test blockchain.</div>
+      </article>
+
+      <aside class="panel admin-panel">
+        <div class="eyebrow">ELECTION CONTROLS</div><h2>Admin panel</h2>
+        <p class="muted">Only the wallet that deployed the contract can manage the election.</p>
+        <label for="candidateName">Add a candidate</label>
+        <div class="input-row"><input id="candidateName" maxlength="80" placeholder="Candidate full name"><button id="addBtn" class="btn primary" disabled>Add</button></div>
+        <button id="endBtn" class="btn danger full" disabled>End voting</button>
+        <div id="adminStatus" class="admin-status">Connect the deployer wallet to enable admin controls.</div>
+      </aside>
+    </section>
+
+    <section class="panel activity-panel">
+      <div class="panel-head"><div><div class="eyebrow">TRANSACTION LOG</div><h2>Recent activity</h2></div><button id="refreshBtn" class="btn secondary" disabled>Refresh</button></div>
+      <div id="message" class="message">Ready. Start the local blockchain and deploy the contract first.</div>
+      <div id="txInfo" class="tx-info"></div>
+    </section>
+    <footer>Educational mini project · Solidity + Ethereum-compatible local network · Not for real elections</footer>
+  </main>
+</body>
+</html>
